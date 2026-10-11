@@ -1,4 +1,4 @@
-# ⚔️ Capítulo 2: A Prova dos Elementos
+# ⚔️ A Prova dos Elementos
 
 Desafio Semanal 01 | Trilha Backend | Orc'estra Gamificação
 
