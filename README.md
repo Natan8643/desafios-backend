@@ -80,19 +80,30 @@ Para ganhar o **Selo da Primeira Palavra**, o seu feitiço precisa derrotar **to
 Este projeto já vem **pronto e configurado**. Você não precisa criar nem mexer em nada além do indicado abaixo. Ele usa a estrutura padrão de projetos Java com Maven, a mesma que você vai encontrar em projetos reais e nos projetos de backend da EJ.
 
 ```
-semana-01-prova-dos-elementos/
-├── README.md                         # este arquivo (não edite)
-├── ENTREGA.md                        # o seu relatório (VOCÊ PREENCHE)
-├── pom.xml                           # configuração do projeto (não mexa)
-├── mvnw, mvnw.cmd, .mvn/             # Maven Wrapper: roda o Maven sem instalar nada
-├── docs/
-│   └── evidencias/                   # coloque aqui o print dos seus testes
-└── src/
-    ├── main/java/com/orcestra/provadoselementos/
-    │   ├── ArenaDoArquivista.java    # ⭐ VOCÊ EDITA AQUI
-    │   └── App.java                  # para você experimentar na mão
-    └── test/java/com/orcestra/provadoselementos/
-        └── ArenaDoArquivistaTest.java    # as 4 ilusões (não altere)
+|-- README.md
+|-- src
+    |-- docs
+    │   |-- evidencias
+    |-- ENTREGA.md
+    |-- main
+    │   |-- java
+    │       |-- com
+    │           |-- orcestra
+    │               |-- provadoselementos
+    │                   |-- App.java
+    │                   |-- ArenaDoArquivista.java
+    |-- mvnw
+    |-- mvnw.cmd
+    |-- pom.xml
+    |-- target
+    │   |-- classes
+    │   |-- test-classes
+    |-- test
+        |-- java
+            |-- com
+                |-- orcestra
+                    |-- provadoselementos
+                        |-- ArenaDoArquivistaTest.java
 ```
 
 | Pasta ou arquivo | O que é |
