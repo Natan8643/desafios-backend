@@ -75,35 +75,32 @@ Para ganhar o **Selo da Primeira Palavra**, o seu feitiço precisa derrotar **to
 
 ---
 
+## ⏰ Prazo
+
+**Entrega até:** (o assessor informa a data e o horário)
+
+O que vale é o conteúdo que estiver no seu Pull Request até esse horário. Atraso desconta pontos (veja a seção de pontuação).
+
+---
+
 ## 🗺️ Conhecendo o seu projeto
 
 Este projeto já vem **pronto e configurado**. Você não precisa criar nem mexer em nada além do indicado abaixo. Ele usa a estrutura padrão de projetos Java com Maven, a mesma que você vai encontrar em projetos reais e nos projetos de backend da EJ.
 
 ```
-|-- README.md
-|-- src
-    |-- docs
-    │   |-- evidencias
-    |-- ENTREGA.md
-    |-- main
-    │   |-- java
-    │       |-- com
-    │           |-- orcestra
-    │               |-- provadoselementos
-    │                   |-- App.java
-    │                   |-- ArenaDoArquivista.java
-    |-- mvnw
-    |-- mvnw.cmd
-    |-- pom.xml
-    |-- target
-    │   |-- classes
-    │   |-- test-classes
-    |-- test
-        |-- java
-            |-- com
-                |-- orcestra
-                    |-- provadoselementos
-                        |-- ArenaDoArquivistaTest.java
+desafio01/
+├── README.md                          # este arquivo (não edite)
+├── ENTREGA.md                         # o seu relatório (VOCÊ PREENCHE)
+├── pom.xml                            # configuração do projeto (não mexa)
+├── mvnw, mvnw.cmd, .mvn/              # Maven Wrapper: roda o Maven sem instalar nada
+├── docs/
+│   └── evidencias/                    # coloque aqui o print dos seus testes
+└── src/
+    ├── main/java/com/orcestra/provadoselementos/
+    │   ├── ArenaDoArquivista.java     # ⭐ VOCÊ EDITA AQUI
+    │   └── App.java                   # para você experimentar na mão
+    └── test/java/com/orcestra/provadoselementos/
+        └── ArenaDoArquivistaTest.java # as 4 ilusões (não altere)
 ```
 
 | Pasta ou arquivo | O que é |
@@ -112,13 +109,13 @@ Este projeto já vem **pronto e configurado**. Você não precisa criar nem mexe
 | `src/test/java` | Os **testes** que verificam o seu código. Eles são o Guardião |
 | `com/orcestra/provadoselementos` | O **pacote**. Em Java, as pastas refletem o nome do pacote |
 | `pom.xml` | A "receita" do projeto: versão do Java e bibliotecas usadas. Já está pronto |
-| `target/` | Aparece depois que você roda o Maven. É código compilado e relatórios, **gerado automaticamente**. Nunca vai para o GitHub |
+| `target/` | Não existe no começo. Aparece depois que você roda o Maven. É código compilado e relatórios, **gerado automaticamente**. Nunca vai para o GitHub |
 
 ---
 
 ## ⌨️ Comandos que você vai usar
 
-Rode todos dentro da pasta do desafio. Use `./mvnw` no Linux e no macOS. No Windows, use `.\mvnw.cmd` (PowerShell) ou `mvnw.cmd` (Prompt de Comando).
+Rode todos dentro da pasta `desafio01/`. Use `./mvnw` no Linux e no macOS. No Windows, use `.\mvnw.cmd` (PowerShell) ou `mvnw.cmd` (Prompt de Comando).
 
 | Comando | O que faz |
 |---|---|
@@ -135,22 +132,48 @@ java -cp target/classes com.orcestra.provadoselementos.App
 ```
 
 > ⏳ **Na primeira vez**, o Maven baixa algumas bibliotecas. Precisa de internet e pode levar alguns minutos. Nas próximas, é rápido.
+>
+> 🔕 Linhas `WARNING` sobre `System::load` ou `sun.misc.Unsafe` vêm do próprio Maven com JDKs mais novos. Podem ser ignoradas.
 
 **Pré-requisito:** ter o **JDK 21** instalado. Para conferir, rode `java -version`. Se algo não funcionar, fale com o assessor no canal da trilha antes do prazo, não no dia da entrega.
+
+**Usando uma IDE?** Abra o projeto **como projeto Maven**: no IntelliJ, abra o `pom.xml`; no Eclipse, use *File > Import > Existing Maven Projects*; no VS Code, abra a pasta com a extensão Java instalada. **Não crie nem mova pastas dentro de `src/`**: o Maven só enxerga `src/main/java` e `src/test/java`. Arquivos como `.classpath`, `.project` e `.settings/` são gerados pela IDE e não devem ir para o GitHub.
 
 ---
 
 ## 🧭 Como trabalhar, passo a passo
 
-1. **Prepare o repositório.** Crie a branch `backend/semana-01` e coloque esta pasta dentro de `backend/` do seu repositório, conforme o `GUIA-DO-MEMBRO.md`.
-2. **Veja o duelo perdido.** Dentro da pasta do desafio, rode `./mvnw test`. Você deve ver **3 ilusões falhando e 1 passando**. Isso é esperado.
+Se esta é a sua primeira vez neste repositório, faça antes o **fork** e a configuração do `upstream`, explicados no `README.md` da raiz.
+
+1. **Sincronize o seu fork e crie a branch do desafio.** Atualize o fork pelo botão **Sync fork** no GitHub e depois rode:
+
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b desafio01
+   cd desafio01
+   ```
+
+   Nunca trabalhe na `main` do seu fork. Todo o trabalho acontece na branch `desafio01`.
+
+2. **Veja o duelo perdido.** Dentro da pasta `desafio01/`, rode `./mvnw test`. Você deve ver **3 ilusões falhando e 1 passando**. Isso é esperado.
 3. **Abra o `ArenaDoArquivista.java`** e leia o comentário do método. Ele resume as regras do pergaminho.
 4. **Resolva uma ilusão por vez.** Mexa um pouco, rode `./mvnw test`, leia o resultado, ajuste. Repita.
 5. **Faça um commit a cada ilusão derrotada**, com mensagens no padrão `tipo: descrição` (por exemplo, `feat: trata empate de tamanho`).
 6. **Teste na mão.** Edite a lista no `App.java` com os seus próprios cenários e rode o `App`. Invente casos difíceis: nomes repetidos, todos do mesmo tamanho, nome vazio na lista.
 7. **Quando as 4 estiverem verdes**, salve um print do terminal em `docs/evidencias/`.
 8. **Preencha o `ENTREGA.md`** com as decisões, as dificuldades e as respostas das perguntas de reflexão.
-9. **Abra o Pull Request** para a `main`, com o título `[Backend] Semana 01: A Prova dos Elementos`. **Não faça o merge.** Quem faz é o assessor.
+9. **Envie a branch e abra o Pull Request.**
+
+   ```bash
+   git push -u origin desafio01
+   ```
+
+   No GitHub, abra o PR **do seu fork para a `main` do repositório original**, com o título `[Desafio 01] Seu Nome Sobrenome`. Antes de confirmar, abra a aba **Files changed** e confira que só aparecem arquivos da pasta `desafio01/`.
+
+   **Não faça o merge.** O assessor vai revisar, comentar e fechar o PR, e isso é normal: o PR é a sua entrega.
+
+Se o assessor pedir ajustes, faça novos commits na mesma branch e dê `git push`. O PR se atualiza sozinho, não abra outro.
 
 ### 🔎 Como ler o resultado do `./mvnw test`
 
@@ -165,7 +188,9 @@ Quando uma ilusão te derrota, o Maven mostra algo parecido com isto (o formato 
 - `expected` é o que o Guardião esperava. `but was` é o que o **seu código devolveu**.
 - O nome do teste (`ilusaoGemea`) diz qual ilusão te acertou.
 - **Errors** é diferente de **Failures**: significa que o seu código quebrou com uma exceção. Role para cima e leia a mensagem.
-- No fim, `BUILD SUCCESS` significa vitória nas ilusões visíveis. `BUILD FAILURE` significa derrota.
+- **Olhe sempre a linha `Tests run:`.** Vitória nas ilusões visíveis é `Tests run: 4, Failures: 0, Errors: 0`.
+- `BUILD SUCCESS` **sozinho não prova nada**. Se aparecer `No tests to run` ou `Tests run: 0`, o Maven não encontrou os seus arquivos. Confira se eles estão em `src/main/java` e `src/test/java`, dentro das pastas `com/orcestra/provadoselementos`.
+- `BUILD FAILURE` com `Failures` maior que zero significa que alguma ilusão ainda te derrota.
 
 > ⚠️ Na primeira execução, a **Ilusão 4 passa por acaso**: o código inicial já devolve `""`. Esse "verde" não prova nada. Não comemore ainda.
 
@@ -201,12 +226,16 @@ Se continuar travado por mais de 40 minutos, escreva a sua dúvida no canal da t
 ## 📏 Regras
 
 - **Proibido:**
-  - alterar o `ArenaDoArquivistaTest.java` ou qualquer arquivo de `src/test`
+  - alterar os arquivos de teste fornecidos (`ArenaDoArquivistaTest.java`)
   - escrever respostas fixas para os casos que você vê (como `if (ingredientes.size() == 3) return "Orvalho";`)
   - alterar a lista recebida (por exemplo, ordenando-a)
   - versionar a pasta `target/`
-- **Permitido:** laço `for`, `if`, `length()`, `compareTo()`, variáveis e métodos auxiliares.
+  - alterar arquivos fora da pasta `desafio01/`, nem a `main` do seu fork
+- **Permitido:**
+  - laço `for`, `if`, `length()`, `compareTo()`, variáveis e métodos auxiliares
+  - criar um **arquivo novo** para os seus próprios testes (veja o bônus), sem mexer nos fornecidos
 - **Ferramentas de IA:** podem ser usadas para tirar dúvida de conceito. Pedir o feitiço pronto tira justamente o que este desafio quer treinar, e o Julgamento Final mostra quando isso aconteceu.
+- **Os PRs são públicos.** Todos os membros conseguem ver o código uns dos outros. Copiar a solução de outro membro não vale, e os testes ocultos e as perguntas de reflexão existem justamente para isso.
 - Você precisa saber **explicar qualquer linha** do seu código se o assessor perguntar.
 
 ---
@@ -215,17 +244,36 @@ Se continuar travado por mais de 40 minutos, escreva a sua dúvida no canal da t
 
 O **Selo da Primeira Palavra** só é concedido se o seu feitiço passar nas 4 ilusões visíveis **e** em todo o Julgamento Final. Quem ganha o selo avança na história para o próximo capítulo.
 
-Além do selo, você soma **Pontos de Glória** para o ranking da EJ:
+Além do selo, você soma **Pontos de Glória** para o ranking da EJ. A nota base vai até **100 pontos** e os bônus somam até **5 pontos**, para um máximo de **105**.
+
+### Nota base (100 pontos)
 
 | Critério | Pontos |
 |---|---|
 | Selo conquistado (todas as ilusões) | 60 |
-| Qualidade do código (nomes claros, sem repetição, indentação, sem respostas fixas) | 15 |
-| Estrutura e entrega (pasta e pacote no padrão, PR, commits no padrão, sem `target/`) | 10 |
+| Qualidade do código | 20 |
+| Estrutura e entrega (branch e título do PR no padrão, só a pasta `desafio01/` alterada, commits no padrão, sem `target/`) | 10 |
 | `ENTREGA.md` preenchido e perguntas de reflexão | 10 |
-| Bônus: arquivo `MeusTestesTest.java` com 3 ou mais testes seus, em `src/test` | 3 |
-| Bônus: uma segunda solução usando Streams, em outro método | 2 |
-| **Total** | **100** |
+| **Total da nota base** | **100** |
+
+**Como os 20 pontos de qualidade são distribuídos:**
+
+| Item | Pontos |
+|---|---|
+| Nomes claros de variáveis e métodos | 5 |
+| Sem código repetido (métodos auxiliares quando fizer sentido) | 5 |
+| Legibilidade e indentação | 5 |
+| Sem atalhos proibidos (respostas fixas, alterar a lista recebida) | 5 |
+
+### Bônus (até 5 pontos)
+
+| Bônus | Pontos |
+|---|---|
+| Arquivo novo `MeusTestesTest.java` com 3 ou mais testes seus, em `src/test` | 3 |
+| Uma segunda solução usando Streams, em outro método | 2 |
+| **Total dos bônus** | **5** |
+
+**Nota máxima: 105 pontos (100 da base + 5 de bônus).**
 
 - **Atraso na entrega:** desconto de 10 pontos.
 - **Código idêntico ao de outro membro:** zera o `ENTREGA.md` e a qualidade do código, e abre conversa individual.
