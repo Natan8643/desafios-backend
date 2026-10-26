@@ -27,10 +27,8 @@ public class ArenaDoArquivista {
                 continue;
             }
 
-            else if (ingredientes.get(i).length() == resultado.length()) {
-                if (ingredientes.get(i).charAt(0) < resultado.charAt(0)) {
-                    resultado = ingredientes.get(i);
-                }
+            else if (ingredientes.get(i).length() == resultado.length() && ingredientes.get(i).compareTo(resultado) < 0) {
+                resultado = ingredientes.get(i);
             }
         }
         return resultado;
